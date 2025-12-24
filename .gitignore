@@ -1,0 +1,14 @@
+node_modules
+.env
+coverage
+coverage.json
+typechain
+typechain-types
+dist
+buildnpm install prisma @types/node @types/pg --save-dev 
+npm install @prisma/client @prisma/adapter-pg pg dotenv
+
+# Hardhat files
+cache                 
+artifacts
+/generated/prisma
