@@ -31,20 +31,20 @@ async function run() {
   //   console.log("Create Post:", createPost);
   // console.log("Create Profile:", createProfile);
 
-  // const users = await prisma.user.findMany({
-  //   // include: {
-  //   //   posts: true,
-  //   //   profile: true,
-  //   // },
-  //   select: {
-  //     id: true,
-  //     name: true,
-  //     email: true,
-  //     role: true,
-  //     posts: true,
-  //     profile: true,
-  //   },
-  // });
+  const users = await prisma.user.findMany({
+    // include: {
+    //   posts: true,
+    //   profile: true,
+    // },
+    select: {
+      id: true,
+      name: true,
+      email: true,
+      role: true,
+      // posts: true,
+      // profile: true,
+    },
+  });
 
   // const profiles = await prisma.profile.findMany({
   //   // include: {
@@ -58,7 +58,7 @@ async function run() {
   //   },
   // });
 
-  //   console.log("Users", users);
+    console.log("Users", users);
   // console.log("Profile", profiles);
 
   // const updatedUser = await prisma.profile.update({
@@ -97,15 +97,30 @@ async function run() {
 
   // console.log("Delete User", deleteUser);
 
-  const getUserDataById = await prisma.user.findUnique({
-    where: { id: 3 },
-    include: {
-      posts: true,
-      profile: true,
-    },
-  });
+  // const getUserDataById = await prisma.user.findUnique({
+  //   where: { id: 3 },
+  //   include: {
+  //     posts: true,
+  //     profile: true,
+  //   },
+  // });
 
-  console.log("Single User", getUserDataById);
+  // console.log("Single User", getUserDataById);
+
+  // const upsertUser = await prisma.user.upsert({
+  //   where: {
+  //     email: "tonmoyz@gmail.com",
+  //   },
+  //   update: {
+  //     name: "Khaled Zohani Tonmoy",
+  //   },
+  //   create: {
+  //     name: "Tonmoy Zohan",
+  //     email: "tonmoyz@gmail.com",
+  //   },
+  // });
+
+  // console.log("Upsert User", upsertUser);
 }
 
 run();
