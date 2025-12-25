@@ -31,23 +31,81 @@ async function run() {
   //   console.log("Create Post:", createPost);
   // console.log("Create Profile:", createProfile);
 
-  const users = await prisma.user.findMany({
-    // include: {
-    //   posts: true,
-    //   profile: true,
-    // },
-    select: {
-      id: true,
-      name: true,
-      email: true,
-      role: true,
+  // const users = await prisma.user.findMany({
+  //   // include: {
+  //   //   posts: true,
+  //   //   profile: true,
+  //   // },
+  //   select: {
+  //     id: true,
+  //     name: true,
+  //     email: true,
+  //     role: true,
+  //     posts: true,
+  //     profile: true,
+  //   },
+  // });
+
+  // const profiles = await prisma.profile.findMany({
+  //   // include: {
+  //   //   posts: true,
+  //   //   profile: true,
+  //   // },
+  //   select: {
+  //     id: true,
+  //     bio: true,
+  //     dateOfBirth: true,
+  //   },
+  // });
+
+  //   console.log("Users", users);
+  // console.log("Profile", profiles);
+
+  // const updatedUser = await prisma.profile.update({
+  //   where: {
+  //     userId: 1,
+  //   },
+  //   data: {
+  //     bio: "This is my updated bio",
+  //     dateOfBirth: new Date("1990-01-01"),
+  //   },
+  //   select: {
+  //     id: true,
+  //     bio: true,
+  //     user: true,
+  //   },
+  // });
+
+  // console.log("Updated User", updatedUser);
+
+  // const profiles = await prisma.profile.findMany({
+  //   select: {
+  //     id: true,
+  //     bio: true,
+  //     dateOfBirth: true,
+  //     user: true,
+  //   },
+  // });
+
+  // console.log("Profiles", profiles);
+
+  // const deleteUser = await prisma.user.delete({
+  //   where: {
+  //     id: 3,
+  //   },
+  // });
+
+  // console.log("Delete User", deleteUser);
+
+  const getUserDataById = await prisma.user.findUnique({
+    where: { id: 3 },
+    include: {
       posts: true,
       profile: true,
     },
   });
 
-  //   console.log("Users", users);
-  console.dir(users, { depth: Infinity });
+  console.log("Single User", getUserDataById);
 }
 
 run();
